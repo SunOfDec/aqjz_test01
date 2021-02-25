@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jz.aqjz.dao.UserDao">
+
+    <select id="findUser" resultType="com.jz.aqjz.entities.User">
+        select * from jzaq_user_member where username=#{username} and password=#{password};
+    </select>
+
+
+    <resultMap id="BaseResultMap" type="com.jz.aqjz.entities.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="mobile" property="mobile"></result>
+        <result column="email" property="email"></result>
+    </resultMap>
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from jzaq_user_member;
+    </select>
+
+    <select id="findUserById" parameterType="long" resultType="com.jz.aqjz.entities.User">
+        select * from jzaq_user_member where id=#{id};
+    </select>
+
+</mapper>
+
+
